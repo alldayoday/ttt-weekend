@@ -4,7 +4,7 @@
 
 /*---------------------------- Variables (state) ----------------------------*/
 let turn, isWinner, won, tie, play, allSelected, playerTurn
-let board = []
+let board 
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -17,7 +17,9 @@ const s5 = document.querySelector("s5")
 const s6 = document.querySelector("s6")
 const s7 = document.querySelector("s7")
 const s8 = document.querySelector("s8")
-const gameStatus = document.querySelector("message")
+
+const gameStatus = document.querySelector("#message")
+
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -50,29 +52,31 @@ const gameStatus = document.querySelector("message")
 // 3) Upon loading, the app should:
 
 	// 3.1) Call an initialize function
+init ()
+
 
 function init(){
-	s0 = []
-	s1 = []
-	s2 = []
-	s3 = []
-	s4 = []
-	s5 = []
-	s6 = []
-	s7 = []
-	s8 = []
-	board = [s0, s1, s2, s3, s4, s5, s6, s7, s8]
+	// s0 = null
+	// s1 = null
+	// s2 = null
+	// s3 = null
+	// s4 = null
+	// s5 = null
+	// s6 = null
+	// s7 = null
+	// s8 = null
+	board = [null,null,null,null,null,null,null,null]
 	playerTurn = 1
 	gameStatus.textContent = "Player X's Turn"
-	replayBtn.setAttribute("hidden", true)
+	// replayBtn.setAttribute("hidden", true)
 	isWinner = {}
 }
 
-console.log(isWinner)
+console.log(board)
 
 	// 3.2) That initialize function should initialize the state variables:
 	  // 3.2.1) Initialize the board array to 9 nulls to represent empty squares. 
-	    // The 9 elements will "map" to each square.
+	    // The 9 elements will "map" to each square. 
 	    // Index 0 represents the top-left square.
 	    // Index 1 represents the top-middle square.
 			// So on, continuing through the entire board until...
