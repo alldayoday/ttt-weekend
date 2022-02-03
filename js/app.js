@@ -3,11 +3,21 @@
 
 
 /*---------------------------- Variables (state) ----------------------------*/
-
+let turn, isWinner, won, tie, play, allSelected, playerTurn
+let board = []
 
 
 /*------------------------ Cached Element References ------------------------*/
-
+const s0 = document.querySelector("s0")
+const s1 = document.querySelector("s1")
+const s2 = document.querySelector("s2")
+const s3 = document.querySelector("s3")
+const s4 = document.querySelector("s4")
+const s5 = document.querySelector("s5")
+const s6 = document.querySelector("s6")
+const s7 = document.querySelector("s7")
+const s8 = document.querySelector("s8")
+const gameStatus = document.querySelector("message")
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -19,27 +29,46 @@
 // 1) Define the required variables used to track the state of the game:
   // None of these variables will need to hold a value when they are defined
 
-	// 1.1) Use an array to represent the squares on the board.    
+	// 1.1) Use an array to represent the squares on the board.  ✅  
 
-	// 1.2) Use a turn variable to track whose turn it is.
+	// 1.2) Use a turn variable to track whose turn it is.✅
 
 	// 1.3) Use a winner variable to represent three different game states:
-	  // a player that won
-	  // a tie has occured
-	  // or a game that is still in play.
+	  // a player that won✅
+	  // a tie has occured✅
+	  // or a game that is still in play.✅
 
 
 // 2) Store cached element references on the page that will be accessed in code more than once in variables to make code more concise, readable, and performant:
 	
 	// 2.1) Store the 9 elements that represent the squares on the page.
-	  // You may want to give each square a class name in your HTML to make this easier!
+	  // You may want to give each square a class name in your HTML to make this easier!✅
 
-	// 2.2) Store the element that displays the game status on the page.
+	// 2.2) Store the element that displays the game status on the page.✅
 
 
 // 3) Upon loading, the app should:
 
 	// 3.1) Call an initialize function
+
+function init(){
+	s0 = []
+	s1 = []
+	s2 = []
+	s3 = []
+	s4 = []
+	s5 = []
+	s6 = []
+	s7 = []
+	s8 = []
+	board = [s0, s1, s2, s3, s4, s5, s6, s7, s8]
+	playerTurn = 1
+	gameStatus.textContent = "Player X's Turn"
+	replayBtn.setAttribute("hidden", true)
+	isWinner = {}
+}
+
+console.log(isWinner)
 
 	// 3.2) That initialize function should initialize the state variables:
 	  // 3.2.1) Initialize the board array to 9 nulls to represent empty squares. 
