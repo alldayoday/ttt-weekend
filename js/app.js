@@ -17,7 +17,7 @@ const s5 = document.querySelector("#sq5")
 const s6 = document.querySelector("#sq6")
 const s7 = document.querySelector("#sq7")
 const s8 = document.querySelector("#sq8")
-const brd = document.querySelector("board")
+const brd = document.querySelector("section")
 
 const replayBtn = document.querySelector("#playAgain")
 
@@ -26,15 +26,16 @@ const gameStatus = document.querySelector("#message")
 
 
 /*----------------------------- Event Listeners -----------------------------*/
-s0.addEventListener('click', playerMove)
-s1.addEventListener('click', playerMove)
-s2.addEventListener('click', playerMove)
-s3.addEventListener('click', playerMove)
-s4.addEventListener('click', playerMove)
-s5.addEventListener('click', playerMove)
-s6.addEventListener('click', playerMove)
-s7.addEventListener('click', playerMove)
-s8.addEventListener('click', playerMove)
+brd.addEventListener('click', playerMove)
+// s0.addEventListener('click', playerMove)
+// s1.addEventListener('click', playerMove)
+// s2.addEventListener('click', playerMove)
+// s3.addEventListener('click', playerMove)
+// s4.addEventListener('click', playerMove)
+// s5.addEventListener('click', playerMove)
+// s6.addEventListener('click', playerMove)
+// s7.addEventListener('click', playerMove)
+// s8.addEventListener('click', playerMove)
 /*-------------------------------- Functions --------------------------------*/
 
 function playerMove(){
