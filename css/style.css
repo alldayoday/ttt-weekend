@@ -37,3 +37,14 @@ h2 {
   margin-right: auto;
   font-family: 'Caveat Brush', cursive;
 }
+
+button {
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  text-align: center;
+  display:inline-block;
+  font-size: 16px;
+  margin: 150px, 2px;
+  cursor: pointer;
+}
