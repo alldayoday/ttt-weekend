@@ -72,15 +72,6 @@ init ()
 
 
 function init(){
-	// s0 = null
-	// s1 = null
-	// s2 = null
-	// s3 = null
-	// s4 = null
-	// s5 = null
-	// s6 = null
-	// s7 = null
-	// s8 = null
 	board = [null,null,null,null,null,null,null,null]
 	playerTurn = 1
 	gameStatus.textContent = "Player X's Turn"

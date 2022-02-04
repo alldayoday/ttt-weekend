@@ -14,6 +14,8 @@ section.board {
   grid-template-rows: repeat(3, 10vmin);
   grid-template-columns: repeat(3, 10vmin);
   grid-gap: 0vmin;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 div {
@@ -21,4 +23,17 @@ div {
   font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
+}
+
+h1 {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Caveat Brush', cursive;
+  font-size: 70px;
+}
+
+h2 {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Caveat Brush', cursive;
 }
