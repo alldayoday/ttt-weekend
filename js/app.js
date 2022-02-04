@@ -19,6 +19,7 @@ const s7 = document.querySelector("#sq7")
 const s8 = document.querySelector("#sq8")
 const brd = document.querySelector("board")
 
+const replayBtn = document.querySelector("#playAgain")
 
 const gameStatus = document.querySelector("#message")
 
@@ -83,7 +84,7 @@ function init(){
 	board = [null,null,null,null,null,null,null,null]
 	playerTurn = 1
 	gameStatus.textContent = "Player X's Turn"
-	// replayBtn.setAttribute("hidden", true)
+	replayBtn.setAttribute("hidden", true)
 	isWinner = {}
 }
 
