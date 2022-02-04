@@ -8,25 +8,33 @@ let board
 
 
 /*------------------------ Cached Element References ------------------------*/
-const s0 = document.querySelector("s0")
-const s1 = document.querySelector("s1")
-const s2 = document.querySelector("s2")
-const s3 = document.querySelector("s3")
-const s4 = document.querySelector("s4")
-const s5 = document.querySelector("s5")
-const s6 = document.querySelector("s6")
-const s7 = document.querySelector("s7")
-const s8 = document.querySelector("s8")
+const s0 = document.querySelector("#sq0")
+const s1 = document.querySelector("#sq1")
+const s2 = document.querySelector("#sq2")
+const s3 = document.querySelector("#sq3")
+const s4 = document.querySelector("#sq4")
+const s5 = document.querySelector("#sq5")
+const s6 = document.querySelector("#sq6")
+const s7 = document.querySelector("#sq7")
+const s8 = document.querySelector("#sq8")
+
 
 const gameStatus = document.querySelector("#message")
 
 
 
 /*----------------------------- Event Listeners -----------------------------*/
-
+s0.addEventListener('click', playerMove)
 
 
 /*-------------------------------- Functions --------------------------------*/
+
+function playerMove(){
+	console.log('work')
+}
+
+
+
 
 // 1) Define the required variables used to track the state of the game:
   // None of these variables will need to hold a value when they are defined
