@@ -1,25 +1,15 @@
 /*-------------------------------- Constants --------------------------------*/
-const playerOne = "X"
-const playerTwo = -"0"
 
-const winningCombos = []
+const winningCombos = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[0,4,8],[1,4,7],[2,5,6],[3,4,5],[6,7,8]]
+
 
 /*---------------------------- Variables (state) ----------------------------*/
-let turn,
+let playerTurn,
 board, 
 isWinner
 
 
 /*------------------------ Cached Element References ------------------------*/
-let s0 = document.querySelector("#sq0")
-let s1 = document.querySelector("#sq1")
-let s2 = document.querySelector("#sq2")
-let s3 = document.querySelector("#sq3")
-let s4 = document.querySelector("#sq4")
-let s5 = document.querySelector("#sq5")
-let s6 = document.querySelector("#sq6")
-let s7 = document.querySelector("#sq7")
-let s8 = document.querySelector("#sq8")
 
 const brd = document.querySelectorAll("section > div")
 
@@ -30,168 +20,95 @@ const gameStatus = document.querySelector("#message")
 
 
 /*----------------------------- Event Listeners -----------------------------*/
-// brd.addEventListener('click', handleClick)
-// s0.addEventListener('click', handleClickZero)
-// s1.addEventListener('click', handleClickOne)
-// s2.addEventListener('click', handleClickTwo)
-// s3.addEventListener('click', handleClickThree)
-// s4.addEventListener('click', handleClickFour)
-// s5.addEventListener('click', handleClickFive)
-// s6.addEventListener('click', handleClickSix)
-// s7.addEventListener('click', handleClickSeven)
-// s8.addEventListener('click', handleClickEight)
 
 
-replayBtn.addEventListener('click', replay)
+brd.forEach((sq) => sq.addEventListener('click', handleClick))
+
+replayBtn.addEventListener('click', init)
 
 
 /*-------------------------------- Functions --------------------------------*/
-init ()
-
-// s0 = null
-// s1 = null
-// s2 = null
-// s3 = null
-// s4 = null
-// s5 = null
-// s6 = null
-// s7 = null
-// s8 = null
+init()
 
 
-
-console.log(turn)
-
+//set board to 9 nulls
+//set winner to null
+//set initial h2
+//set initial player
+//call render
 function init(){
-	board = [null,null,null,null,null,null,null,null]
-	turn = 1
-	gameStatus.textContent = "Player X's Turn"
+	board = [null,null,null,null,null,null,null,null,null]
 	isWinner = null
-	// render()
+	gameStatus.textContent = "🤖's Turn"
+	playerTurn = 1
+	render()
 }
+//for each idx of board
+//make a var for val
+//if val is 1, x
+//if val is -1, o
+//if val is null, empty
+//set that idx to val
+//if there is no winner set h2 to turn
+//if tie say tie
+//if winner say winner
 
-console.log(board)
-
-render()
 function render() {
-  board.forEach((function check(sq,idx){
+  board.forEach((sq,idx) => {
     let sqVal
-    if (sq === 1) {
-      sqVal = 'X'
+		if (sq === 1) {
+			sqVal = "🤖"
     } else if (sq === -1) {
-      sqVal= 'O'
+			sqVal = "👸"
     } else if (sq === null) {
-      sqVal = ""
+      sqVal =  ""
     }
-	brd[idx].innerText = sqVal
-  }));
+		brd[idx].textContent = sqVal
+	})
 	if (!isWinner) {
-		message.innerText = `It is ${turn === 1 ? "X" : "O"}'s turn!`
-	} else if (winner === "T") {
-		message.innerText = `Tie Game! Play again to find a winner`
+		gameStatus.innerText = `${playerTurn === 1 ? "🤖" : "👸"}'s Turn`
+	} else if (isWinner === "Tie") {
+		gameStatus.innerText = `Tie Game! Play again to find a winner`
 	} else {
-		message.innerText = `${playerName === 1 ? "X" : "O"} is the winner!`
+		gameStatus.innerText = `${playerTurn === -1 ? "🤖" : "👸"} is the winner!`
 	}
-  }
+	}
 
+	// find the idx clicked
+	//parseint to turn into number
+	//if there is something there or if winner is not null, return bc cannot play
+	//otherwise set that idx to player
+	//multiply by -1 to change player
+	//determine if winner 
+	//call render
+	function handleClick(evt){
+		let idx = parseInt(evt.target.id.replace("sq", "")) 
+		if (board[idx] || isWinner) {
+			return 
+		}
+		board[idx] = playerTurn
+		playerTurn *= -1
+		isWinner = getWin()
+		render()
+		}
 
-
-	
-function replay(){
-	console.log('also')
-}
-
-
-
-
-
-function playerName(){
-	if(playerTurn === 1){
-		return 'Player X'
-	} else if (playerTurn === -1) {
-		return 'Player O'
+// 	[0,1,2],[3,4,5],[6,7,8],[0,3,6],[0,4,8],[1,4,7],[2,5,6],[3,4,5],[6,7,8]]
+//find absolute val of winning combos, if it is 3, return one of the winning spots
+//that means whoever is in this spot is winner
+//if there is a null on board, set to null to keep playing
+//otherwise if no combo wins and there are no null, return tie
+function getWin() {
+	if (Math.abs(board[0] + board[1] + board[2]) === 3) return board[0]
+	if (Math.abs(board[3] + board[4] + board[5]) === 3) return board[3]
+	if (Math.abs(board[6] + board[7] + board[8]) === 3) return board[6]
+	if (Math.abs(board[0] + board[3] + board[6]) === 3) return board[0]
+	if (Math.abs(board[1] + board[4] + board[7]) === 3) return board[1]
+	if (Math.abs(board[2] + board[5] + board[8]) === 3) return board[2]
+	if (Math.abs(board[0] + board[4] + board[8]) === 3) return board[0]
+	if (Math.abs(board[2] + board[4] + board[6]) === 3) return board[2]
+	if (board.includes(null)) {
+		return null
+	} else {
+		return "Tie"
 	}
 }
-
-// function handleClickZero(){
-// 	if (playerTurn = 1) {
-// 	sq0.textContent = "X"
-// 	board[0] = 1} else{
-// 		sq0.textContent = "O"
-// 		board[0] = -1
-// 	}
-// 		playerTurn * -1
-// 	}
-// 	function handleClickOne(){
-// 		if (playerTurn = 1) {
-// 		sq1.textContent = "X"
-// 		board[1] = 1} else{
-// 			sq1.textContent = "O"
-// 			board[1] = -1
-// 		}
-// 		console.log(board)
-// 		}
-// 		function handleClickTwo(){
-// 			if (playerTurn = 1) {
-// 			sq2.textContent = "X"
-// 			board[2] = 1} else{
-// 				sq0.textContent = "O"
-// 				board[2] = -1
-// 			}
-// 			console.log(board)
-// 			}
-// 			function handleClickThree(){
-// 				if (playerTurn = 1) {
-// 				sq3.textContent = "X"
-// 				board[3] = 1} else{
-// 					sq0.textContent = "O"
-// 					board[3] = -1
-// 				}
-// 				console.log(board)
-// 				}
-// 				function handleClickFour(){
-// 					if (playerTurn = 1) {
-// 					sq4.textContent = "X"
-// 					board[4] = 1} else{
-// 						sq0.textContent = "O"
-// 						board[4] = -1
-// 					}
-// 					console.log(board)
-// 					}
-// 					function handleClickFive(){
-// 						if (playerTurn = 1) {
-// 						sq5.textContent = "X"
-// 						board[5] = 1} else{
-// 							sq0.textContent = "O"
-// 							board[5] = -1
-// 						}
-// 						console.log(board)
-// 						}
-// 						function handleClickSix(){
-// 							if (playerTurn = 1) {
-// 							sq6.textContent = "X"
-// 							board[6] = 1} else{
-// 								sq0.textContent = "O"
-// 								board[6] = -1
-// 							}
-// 							console.log(board)
-// 							}
-// 							function handleClickSeven(){
-// 								if (playerTurn = 1) {
-// 								sq7.textContent = "X"
-// 								board[7] = 1} else{
-// 									sq0.textContent = "O"
-// 									board[7] = -1
-// 								}
-// 								console.log(board)
-// 								}
-// 								function handleClickEight(){
-// 									if (playerTurn = 1) {
-// 									sq8.textContent = "X"
-// 									board[8] = 1} else{
-// 										sq0.textContent = "O"
-// 										board[8] = -1
-// 									}
-// 									console.log(board)
-// 									}
-
