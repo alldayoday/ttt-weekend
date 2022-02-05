@@ -57,7 +57,7 @@ function render() {
   board.forEach((sq,idx) => {
     let sqVal
 		if (sq === 1) {
-			sqVal = "🤖"
+			sqVal = "🐲"
     } else if (sq === -1) {
 			sqVal = "👸"
     } else if (sq === null) {
@@ -66,11 +66,11 @@ function render() {
 		brd[idx].textContent = sqVal
 	})
 	if (!isWinner) {
-		gameStatus.innerText = `${playerTurn === 1 ? "🤖" : "👸"}'s Turn`
+		gameStatus.innerText = `${playerTurn === 1 ? "🐲" : "👸"}'s Turn`
 	} else if (isWinner === "T") {
 		gameStatus.innerText = `Tie Game! Play again to find a winner`
 	} else {
-		gameStatus.innerText = `${playerTurn === -1 ? "🤖" : "👸"} is the winner!`
+		gameStatus.innerText = `${playerTurn === -1 ? "🐲" : "👸"} is the winner!`
 	}
 	}
 
@@ -106,7 +106,7 @@ function getWin() {
 	if (Math.abs(board[0] + board[3] + board[6]) === 3) return board[0]
 	if (Math.abs(board[1] + board[4] + board[7]) === 3) return board[1]
 	if (Math.abs(board[2] + board[5] + board[8]) === 3) return board[2]
-	
+
 	if (board.includes(null)) {
 		return null
 	} else {
