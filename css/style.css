@@ -56,9 +56,10 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 25px;
-  margin: 20px 200px;
+  margin: 20px 370px;
   cursor: pointer;
   font-family: 'Caveat Brush', cursive;
+  border-radius: 15px;
 }
 
 h3 {
