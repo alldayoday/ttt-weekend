@@ -55,8 +55,8 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 25px;
-  margin: 20px 380px;
+  font-size: 3vh;
+  margin: 20px 300px;
   cursor: pointer;
   font-family: 'Caveat Brush', cursive;
   border-radius: 15px;
