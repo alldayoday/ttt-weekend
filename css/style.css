@@ -56,7 +56,17 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 25px;
-  margin: 80px 200px;
+  margin: 20px 200px;
   cursor: pointer;
   font-family: 'Caveat Brush', cursive;
+}
+
+h3 {
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  font-family: "Caveat Brush", cursive;
+  color: #ffb4a2;
+  font-size: 30px;
 }
