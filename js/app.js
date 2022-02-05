@@ -67,7 +67,7 @@ function render() {
 	})
 	if (!isWinner) {
 		gameStatus.innerText = `${playerTurn === 1 ? "🤖" : "👸"}'s Turn`
-	} else if (isWinner === "Tie") {
+	} else if (isWinner === "T") {
 		gameStatus.innerText = `Tie Game! Play again to find a winner`
 	} else {
 		gameStatus.innerText = `${playerTurn === -1 ? "🤖" : "👸"} is the winner!`
@@ -101,14 +101,15 @@ function getWin() {
 	if (Math.abs(board[0] + board[1] + board[2]) === 3) return board[0]
 	if (Math.abs(board[3] + board[4] + board[5]) === 3) return board[3]
 	if (Math.abs(board[6] + board[7] + board[8]) === 3) return board[6]
+	if (Math.abs(board[0] + board[4] + board[8]) === 3) return board[0]
+	if (Math.abs(board[2] + board[4] + board[6]) === 3) return board[2]
 	if (Math.abs(board[0] + board[3] + board[6]) === 3) return board[0]
 	if (Math.abs(board[1] + board[4] + board[7]) === 3) return board[1]
 	if (Math.abs(board[2] + board[5] + board[8]) === 3) return board[2]
-	if (Math.abs(board[0] + board[4] + board[8]) === 3) return board[0]
-	if (Math.abs(board[2] + board[4] + board[6]) === 3) return board[2]
+	
 	if (board.includes(null)) {
 		return null
 	} else {
-		return "Tie"
+		return "T"
 	}
 }
