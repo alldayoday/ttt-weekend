@@ -39,7 +39,6 @@ init()
 function init(){
 	board = [null,null,null,null,null,null,null,null,null]
 	isWinner = null
-	gameStatus.textContent = "🤖's Turn"
 	playerTurn = 1
 	render()
 }
@@ -68,14 +67,14 @@ function render() {
 	if (!isWinner) {
 		gameStatus.innerText = `${playerTurn === 1 ? "🐲" : "👸"}'s Turn`
 	} else if (isWinner === "T") {
-		gameStatus.innerText = `Tie Game! Play again to find a winner`
+		gameStatus.innerText = `A tie? There is no tie in battle, play again for victory!`
 	} else {
 		gameStatus.innerText = `${playerTurn === -1 ? "🐲" : "👸"} is the winner!`
 	}
 	}
 
 	// find the idx clicked
-	//parseint to turn into number
+	//parseint to turn into number => take the sq from the id and it becomes board array number
 	//if there is something there or if winner is not null, return bc cannot play
 	//otherwise set that idx to player
 	//multiply by -1 to change player
@@ -98,14 +97,14 @@ function render() {
 //if there is a null on board, set to null to keep playing
 //otherwise if no combo wins and there are no null, return tie
 function getWin() {
-	if (Math.abs(board[0] + board[1] + board[2]) === 3) return board[0]
-	if (Math.abs(board[3] + board[4] + board[5]) === 3) return board[3]
-	if (Math.abs(board[6] + board[7] + board[8]) === 3) return board[6]
-	if (Math.abs(board[0] + board[4] + board[8]) === 3) return board[0]
-	if (Math.abs(board[2] + board[4] + board[6]) === 3) return board[2]
-	if (Math.abs(board[0] + board[3] + board[6]) === 3) return board[0]
-	if (Math.abs(board[1] + board[4] + board[7]) === 3) return board[1]
-	if (Math.abs(board[2] + board[5] + board[8]) === 3) return board[2]
+	if (Math.abs(board[0] + board[1] + board[2]) === 3) {return board[0]}
+	if (Math.abs(board[3] + board[4] + board[5]) === 3) {return board[3]}
+	if (Math.abs(board[6] + board[7] + board[8]) === 3) {return board[6]}
+	if (Math.abs(board[0] + board[4] + board[8]) === 3) {return board[0]}
+	if (Math.abs(board[2] + board[4] + board[6]) === 3) {return board[2]}
+	if (Math.abs(board[0] + board[3] + board[6]) === 3) {return board[0]}
+	if (Math.abs(board[1] + board[4] + board[7]) === 3) {return board[1]}
+	if (Math.abs(board[2] + board[5] + board[8]) === 3) {return board[2]}
 
 	if (board.includes(null)) {
 		return null
