@@ -11,7 +11,7 @@ isWinner
 
 /*------------------------ Cached Element References ------------------------*/
 
-const brd = document.querySelectorAll("section > div")
+const brd = document.querySelectorAll("section.board > div")
 
 const replayBtn = document.querySelector("#playAgain")
 
