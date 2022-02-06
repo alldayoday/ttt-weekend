@@ -1,12 +1,12 @@
 /*-------------------------------- Constants --------------------------------*/
 
-const winningCombos = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[0,4,8],[1,4,7],[2,5,6],[3,4,5],[6,7,8]]
+const winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [0, 4, 8], [1, 4, 7], [2, 5, 6], [3, 4, 5], [6, 7, 8]]
 
 
 /*---------------------------- Variables (state) ----------------------------*/
 let playerTurn,
-board, 
-isWinner
+	board,
+	isWinner
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -36,8 +36,8 @@ init()
 //set initial h2
 //set initial player
 //call render
-function init(){
-	board = [null,null,null,null,null,null,null,null,null]
+function init() {
+	board = [null, null, null, null, null, null, null, null, null]
 	isWinner = null
 	playerTurn = 1
 	render()
@@ -53,15 +53,15 @@ function init(){
 //if winner say winner
 
 function render() {
-  board.forEach((sq,idx) => {
-    let sqVal
+	board.forEach((sq, idx) => {
+		let sqVal
 		if (sq === 1) {
 			sqVal = "🐲"
-    } else if (sq === -1) {
+		} else if (sq === -1) {
 			sqVal = "👸"
-    } else if (sq === null) {
-      sqVal =  ""
-    }
+		} else if (sq === null) {
+			sqVal = ""
+		}
 		brd[idx].textContent = sqVal
 	})
 	if (!isWinner) {
@@ -71,25 +71,25 @@ function render() {
 	} else {
 		gameStatus.innerText = `${playerTurn === -1 ? "🐲" : "👸"} is the winner!`
 	}
-	}
+}
 
-	// find the idx clicked
-	//parseint to turn into number => take the sq from the id and it becomes board array number
-	//if there is something there or if winner is not null, return bc cannot play
-	//otherwise set that idx to player
-	//multiply by -1 to change player
-	//determine if winner 
-	//call render
-	function handleClick(evt){
-		let idx = parseInt(evt.target.id.replace("sq", "")) 
-		if (board[idx] || isWinner) {
-			return 
-		}
-		board[idx] = playerTurn
-		playerTurn *= -1
-		isWinner = getWin()
-		render()
-		}
+// find the idx clicked
+//parseint to turn into number => take the sq from the id and it becomes board array number
+//if there is something there or if winner is not null, return bc cannot play
+//otherwise set that idx to player
+//multiply by -1 to change player
+//determine if winner 
+//call render
+function handleClick(evt) {
+	let idx = parseInt(evt.target.id.replace("sq", ""))
+	if (board[idx] || isWinner) {
+		return
+	}
+	board[idx] = playerTurn
+	playerTurn *= -1
+	isWinner = getWin()
+	render()
+}
 
 // 	[0,1,2],[3,4,5],[6,7,8],[0,3,6],[0,4,8],[1,4,7],[2,5,6],[3,4,5],[6,7,8]]
 //find absolute val of winning combos, if it is 3, return one of the winning spots
@@ -97,14 +97,14 @@ function render() {
 //if there is a null on board, set to null to keep playing
 //otherwise if no combo wins and there are no null, return tie
 function getWin() {
-	if (Math.abs(board[0] + board[1] + board[2]) === 3) {return board[0]}
-	if (Math.abs(board[3] + board[4] + board[5]) === 3) {return board[3]}
-	if (Math.abs(board[6] + board[7] + board[8]) === 3) {return board[6]}
-	if (Math.abs(board[0] + board[4] + board[8]) === 3) {return board[0]}
-	if (Math.abs(board[2] + board[4] + board[6]) === 3) {return board[2]}
-	if (Math.abs(board[0] + board[3] + board[6]) === 3) {return board[0]}
-	if (Math.abs(board[1] + board[4] + board[7]) === 3) {return board[1]}
-	if (Math.abs(board[2] + board[5] + board[8]) === 3) {return board[2]}
+	if (Math.abs(board[0] + board[1] + board[2]) === 3) { return board[0] }
+	if (Math.abs(board[3] + board[4] + board[5]) === 3) { return board[3] }
+	if (Math.abs(board[6] + board[7] + board[8]) === 3) { return board[6] }
+	if (Math.abs(board[0] + board[4] + board[8]) === 3) { return board[0] }
+	if (Math.abs(board[2] + board[4] + board[6]) === 3) { return board[2] }
+	if (Math.abs(board[0] + board[3] + board[6]) === 3) { return board[0] }
+	if (Math.abs(board[1] + board[4] + board[7]) === 3) { return board[1] }
+	if (Math.abs(board[2] + board[5] + board[8]) === 3) { return board[2] }
 
 	if (board.includes(null)) {
 		return null
