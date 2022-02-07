@@ -36,6 +36,7 @@ init()
 //set initial h2
 //set initial player
 //call render
+
 function init() {
 	board = [null, null, null, null, null, null, null, null, null]
 	isWinner = null
@@ -48,7 +49,7 @@ function init() {
 //if val is -1, o
 //if val is null, empty
 //set that idx to val
-//if there is no winner set h2 to turn
+//if there is no winner set h3 to turn
 //if tie say tie
 //if winner say winner
 

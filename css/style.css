@@ -7,6 +7,10 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  background-image: url('https://document-export.canva.com/qnSj0/DAE3fwqnSj0/34/thumbnail/0001.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUHWDTJW6UD%2F20220206%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220206T173820Z&X-Amz-Expires=32712&X-Amz-Signature=d984f4197f7265a7d9567b6ba4f5edca15d93c28a21fd8e2d0f69b0f1b1f0ec8&X-Amz-SignedHeaders=host&response-expires=Mon%2C%2007%20Feb%202022%2002%3A43%3A32%20GMT');
+  background-size: cover;
+  background-position-x: center;
+
 
 }
 
